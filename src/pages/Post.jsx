@@ -44,40 +44,43 @@ class Post extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch(`https://jsonplaceholder.typicode.com/posts?postId=${this.props.match.params.postId}`)
+        fetch(`https://jsonplaceholder.typicode.com/posts?id=${this.props.match.params.postId}`)
             .then(response => response.json())
             .then(posts => this.setState({ posts }))
     }
 
+    //https://jsonplaceholder.typicode.com/posts?id=
+
     render = () => {
+        console.log(this.props);
         return (
             <React.Fragment>
                 <CssBaseline />
                 <Container maxWidth="lg">
-                    <Link to="/"><Header title="Blog" sections={sections} /></Link>
-                    <main>
-                        <Grid container spacing={5} className={this.props.classes.mainGrid}>
-                            <Card>
-                                <CardActionArea>
-                                    {this.state.posts.map((post) => (
-                                        <CardContent key={`postId-${post.id}`}>
-                                            <Typography gutterBottom variant="h5" component="h2">
-                                                {post.title}
-                                            </Typography>
-                                            <CardMedia
-                                                className={this.props.classes.media}
-                                                image="https://source.unsplash.com/random"
-                                                title={post.title}
-                                            />
-                                            <Typography variant="body2" color="textSecondary" component="p">
-                                                {post.body}
-                                            </Typography>
-                                        </CardContent>
-                                    ))}
-                                </CardActionArea>
-                            </Card>
-                        </Grid>
-                    </main>
+                    <Link to="/">
+                        <Header title="Blog" sections={sections} />
+                    </Link>
+                    <Grid container spacing={5} className={this.props.classes.mainGrid}>
+                        <Card>
+                            <CardActionArea>
+                                {this.state.posts.map((post) => (
+                                    <CardContent key={`postId-${post.id}`}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {post.title}
+                                        </Typography>
+                                        <CardMedia
+                                            className={this.props.classes.media}
+                                            image="https://source.unsplash.com/random"
+                                            title={post.title}
+                                        />
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            {post.body}
+                                        </Typography>
+                                    </CardContent>
+                                ))}
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
                 </Container>
                 <Footer
                     title="Footer"
