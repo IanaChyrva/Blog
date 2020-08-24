@@ -21,7 +21,7 @@ const styles = (theme) => ({
         marginTop: theme.spacing(3),
     },
     media: {
-        height: 140,
+        height: 300,
     },
 });
 
@@ -49,10 +49,7 @@ class Post extends React.Component {
             .then(posts => this.setState({ posts }))
     }
 
-    //https://jsonplaceholder.typicode.com/posts?id=
-
     render = () => {
-        console.log(this.props);
         return (
             <React.Fragment>
                 <CssBaseline />
